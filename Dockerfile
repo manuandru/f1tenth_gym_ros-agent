@@ -44,11 +44,15 @@ RUN cd f1tenth_gym && \
 # ros2 gym bridge
 RUN mkdir -p sim_ws/src/f1tenth_gym_ros
 COPY . /sim_ws/src/f1tenth_gym_ros
+COPY car_node /sim_ws/src/car_node
 RUN source /opt/ros/foxy/setup.bash && \
     cd sim_ws/ && \
     apt-get update --fix-missing && \
     rosdep install -i --from-path src --rosdistro foxy -y && \
     colcon build
+
+RUN echo "source /opt/ros/foxy/setup.bash" >> /root/.bashrc && \
+    echo "source /sim_ws/install/setup.bash" >> /root/.bashrc
 
 WORKDIR '/sim_ws'
 ENTRYPOINT ["/bin/bash"]

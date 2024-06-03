@@ -28,7 +28,7 @@ class WallFollower(Node):
         error = self.target_distance - self.current_distance
         steering_angle = self.kp * error
         drive_msg = AckermannDriveStamped()
-        drive_msg.drive.speed = self.speed * 100
+        drive_msg.drive.speed = self.speed
         drive_msg.drive.steering_angle = steering_angle
         self.publisher_.publish(drive_msg)
 
