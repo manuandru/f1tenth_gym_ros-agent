@@ -20,3 +20,14 @@ To run them, open another terminal:
 docker exec -it f1tenth_gym_ros-agent-sim-1 /bin/bash
 ros2 run car_node car
 ```
+
+## Client Server Approach
+
+```bash
+docker compose -f docker-compose-client-server.yml up --build
+```
+
+```bash
+docker exec -it f1tenth_gym_ros-agent-sim-1 /bin/bash
+ros2 run car_node car
+```
