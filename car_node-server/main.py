@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 import numpy as np
-# from time import sleep
+import random
+from time import sleep
 
 app = Flask(__name__)
 
@@ -117,7 +118,10 @@ logic = Logic()
 @app.route('/calculate', methods=['POST'])
 def post_handler():
     body = request.json
-    # sleep(0.1)
+
+    random_sleep = 0.05 + 0.05 * random.random()
+    sleep(random_sleep)
+
     print(body['stamp'])
     speed, steering_angle = logic.scan_callback(body['stamp'], body['ranges'])
     print('speed:', speed, 'steering_angle:', steering_angle)
